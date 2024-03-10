@@ -59,11 +59,29 @@ public sealed class SnotPlayer : Component
 		Controller.Accelerate( wishVelocity );
 
 		if ( Controller.IsOnGround )
+		{
 			Controller.ApplyFriction( 5f );
+
+			if ( Input.Pressed("Jump") )
+			{
+				Controller.Punch( Vector3.Up * JumpStrength );
+
+				if ( Animator != null )
+					Animator.TriggerJump();
+			}
+		}
 		else
+		{
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+		}
 
 		Controller.Move();
+
+		if ( Animator != null )
+		{
+			Animator.IsGrounded = Controller.IsOnGround;
+			Animator.WithVelocity( Controller.Velocity );
+		}
 	}
 
 	protected override void OnStart()
