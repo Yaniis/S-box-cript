@@ -39,17 +39,31 @@ public sealed class SnotPlayer : Component
 	[Range( 0f, 600f, 1f )]
 	public float JumpStrength { get; set; } = 400f;
 
-
-
+	public Angles EyeAngles { get; set; }
 
 	protected override void OnUpdate()
 	{
-		base.OnUpdate();
+		EyeAngles += Input.AnalogLook;
+		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 	}
 
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
+
+		if ( Controller == null ) return;
+
+		var wishSpeed = Input.Down("Run") ? RunSpeed : WalkSpeed;
+		var wishVelocity = Input.AnalogMove * wishSpeed * Transform.Rotation;
+
+		Controller.Accelerate( wishVelocity );
+
+		if ( Controller.IsOnGround )
+			Controller.ApplyFriction( 5f );
+		else
+			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+
+		Controller.Move();
 	}
 
 	protected override void OnStart()
