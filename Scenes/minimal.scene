@@ -7,6 +7,7 @@
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
@@ -23,6 +24,7 @@
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
@@ -45,25 +47,25 @@
     {
       "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
+      "Position": "-10.29982,0,0",
       "Scale": "5,5,5",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
-          "Tint": "0.39546,0.51163,0.27128,1"
+          "Tint": "0.24337,0.33023,0.15052,1"
         },
         {
           "__type": "BoxCollider",
           "Center": "0,0,-5",
           "IsTrigger": false,
-          "Scale": "100,100,10",
-          "Static": false,
-          "Surface": null
+          "Scale": "200,200,10",
+          "Static": false
         }
       ]
     },
@@ -74,11 +76,11 @@
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -89,8 +91,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -111,11 +112,11 @@
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -126,8 +127,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -148,11 +148,11 @@
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -163,8 +163,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -185,11 +184,11 @@
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -200,8 +199,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -222,11 +220,11 @@
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -237,8 +235,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
@@ -255,19 +252,16 @@
     {
       "Id": "32c328cd-7b17-477b-9862-e177ebfb91ca",
       "Name": "Player",
-      "Position": "-155.8129,-11.84778,43.16407",
+      "Position": "-152.3224,101.4392,2.42354",
       "Rotation": "0,0,-0.7121843,0.7019925",
       "Scale": "1,1,1.059305",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkinnedModelRenderer",
-          "AnimationGraph": null,
           "BodyGroups": 341,
-          "BoneMergeTarget": null,
           "CreateBoneObjects": false,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
           "Model": "models/citizen/citizen.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -285,15 +279,9 @@
         {
           "__type": "CitizenAnimationHelper",
           "BodyWeight": 1,
-          "EyeSource": null,
           "EyesWeight": 1,
           "HeadWeight": 1,
           "Height": 1,
-          "IkLeftFoot": null,
-          "IkLeftHand": null,
-          "IkRightFoot": null,
-          "IkRightHand": null,
-          "LookAt": null,
           "LookAtEnabled": false,
           "Target": {
             "_type": "component",
@@ -317,6 +305,8 @@
             "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
             "component_type": "CharacterController"
           },
+          "EyePosition": "0,0,60.15999",
+          "JumpAmount": 2,
           "JumpStrength": 400,
           "RunSpeed": 178,
           "WalkSpeed": 120
@@ -330,6 +320,7 @@
           "Rotation": "-0.3053911,0.0976209,0.9022349,0.288407",
           "Scale": "1,1,0.9440156",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "CameraComponent",
@@ -414,6 +405,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-09T19:32:27.3309155\u002B01:00",
+  "LastSaved": "2024-03-11T22:05:01.2506895\u002B01:00",
   "__references": []
 }

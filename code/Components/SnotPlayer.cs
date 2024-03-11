@@ -38,6 +38,7 @@ public sealed class SnotPlayer : Component
 	[Category( "Stats" )]
 	[Range( 0f, 600f, 1f )]
 	public float JumpStrength { get; set; } = 400f;
+	public int JumpRemained { get; set; } = 2;
 
 	/// <summary>
 	/// Where the camero rotates around and the aim originates from
@@ -74,21 +75,26 @@ public sealed class SnotPlayer : Component
 
 		Controller.Accelerate( wishVelocity );
 
+		// Jump event
+		if ( Input.Pressed( "Jump" ) && JumpRemained != 0 )
+		{
+			JumpRemained--;
+			Controller.Punch( Vector3.Up * JumpStrength );
+
+			if ( Animator != null )
+				Animator.TriggerJump();
+		}
+
 		if ( Controller.IsOnGround )
 		{
+
+			JumpRemained = 2;
+
 			Controller.Acceleration = 10f;
 			Controller.ApplyFriction( 5f );
-
-			if ( Input.Pressed("Jump") )
-			{
-				Controller.Punch( Vector3.Up * JumpStrength );
-
-				if ( Animator != null )
-					Animator.TriggerJump();
-			}
 		}
 		else
-		{
+		{		
 			Controller.Acceleration = 5f;
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
@@ -104,6 +110,7 @@ public sealed class SnotPlayer : Component
 
 	protected override void OnStart()
 	{
+
 		if ( Camera != null )
 		{
 			_initialCameraTransform = Camera.Transform.Local;
