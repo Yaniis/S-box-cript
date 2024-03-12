@@ -1,4 +1,5 @@
 using Sandbox.Citizen;
+using Sandbox.VR;
 
 public sealed class SnotPlayer : Component
 {
@@ -78,8 +79,21 @@ public sealed class SnotPlayer : Component
 		// Jump event
 		if ( Input.Pressed( "Jump" ) && JumpRemained != 0 )
 		{
+
+			if (JumpRemained == 2){
+
+				Controller.IsOnGround = false;
+				Controller.Velocity = Controller.Velocity.WithZ( JumpStrength );
+				
+			} else if (JumpRemained == 1 )
+			{
+				Log.Info( "" );
+				Controller.Velocity = Vector3.Up * JumpStrength;
+			}
+
 			JumpRemained--;
-			Controller.Punch( Vector3.Up * JumpStrength );
+			//Controller.Punch( Vector3.Up * JumpStrength );
+
 
 			if ( Animator != null )
 				Animator.TriggerJump();
@@ -96,6 +110,7 @@ public sealed class SnotPlayer : Component
 		else
 		{		
 			Controller.Acceleration = 5f;
+			// Apply gravity when in the air
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
 
