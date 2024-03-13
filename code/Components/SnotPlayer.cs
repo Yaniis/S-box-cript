@@ -47,6 +47,8 @@ public sealed class SnotPlayer : Component
 	[Property]
 	public Vector3 EyePosition { get; set; }
 
+	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
+
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 
@@ -58,11 +60,22 @@ public sealed class SnotPlayer : Component
 	protected override void OnUpdate()
 	{
 		EyeAngles += Input.AnalogLook;
-		EyeAngles = EyeAngles.WithPitch( 0f );
+		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 
 		if ( Camera != null )
-			Camera.Transform.Local = _initialCameraTransform.RotateAround(EyePosition, EyeAngles.WithYaw(0f));
+		{
+			var cameraTransform = _initialCameraTransform.RotateAround( EyePosition, EyeAngles.WithYaw( 0f ) );
+			var cameraPosition = Transform.Local.PointToWorld( cameraTransform.Position );
+			var cameraTrace = Scene.Trace.Ray( EyeWorldPosition, cameraPosition )
+				.Size( 5f )
+				.IgnoreGameObjectHierarchy( GameObject )
+				.WithoutTags( "player" )
+				.Run();
+
+			Camera.Transform.Position = cameraTrace.EndPosition;
+			Camera.Transform.LocalRotation = cameraTransform.Rotation;
+		}
 	}
 
 	protected override void OnFixedUpdate()
@@ -80,20 +93,10 @@ public sealed class SnotPlayer : Component
 		if ( Input.Pressed( "Jump" ) && JumpRemained != 0 )
 		{
 
-			if (JumpRemained == 2){
-
-				Controller.IsOnGround = false;
-				Controller.Velocity = Controller.Velocity.WithZ( JumpStrength );
-				
-			} else if (JumpRemained == 1 )
-			{
-				Log.Info( "" );
-				Controller.Velocity = Vector3.Up * JumpStrength;
-			}
+			Controller.IsOnGround = false;
+			Controller.Velocity = Vector3.Up * JumpStrength;
 
 			JumpRemained--;
-			//Controller.Punch( Vector3.Up * JumpStrength );
-
 
 			if ( Animator != null )
 				Animator.TriggerJump();
@@ -101,7 +104,6 @@ public sealed class SnotPlayer : Component
 
 		if ( Controller.IsOnGround )
 		{
-
 			JumpRemained = 2;
 
 			Controller.Acceleration = 10f;
@@ -109,7 +111,7 @@ public sealed class SnotPlayer : Component
 		}
 		else
 		{		
-			Controller.Acceleration = 5f;
+			Controller.Acceleration = 2f;
 			// Apply gravity when in the air
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}

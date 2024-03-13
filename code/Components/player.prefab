@@ -1,0 +1,299 @@
+{
+  "RootObject": {
+    "__guid": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+    "Name": "Player",
+    "Position": "79.13228,33.74929,28.29975",
+    "Rotation": "-0,0,0.9856067,-0.1690545",
+    "Scale": "1,1,1.059305",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "SkinnedModelRenderer",
+        "__guid": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+        "BodyGroups": 325,
+        "CreateBoneObjects": false,
+        "MaterialGroup": "default",
+        "Model": "models/citizen/citizen.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "CharacterController",
+        "__guid": "4c12b5d3-b184-40f7-82c8-a62530274120",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 16,
+        "StepHeight": 18
+      },
+      {
+        "__type": "CitizenAnimationHelper",
+        "__guid": "a651f3ba-4e5c-4067-8097-15a604eccad7",
+        "BodyWeight": 1,
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "Height": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+          "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "SnotPlayer",
+        "__guid": "f6fd1c5c-90ee-4702-aa5b-f63a2d458761",
+        "Animator": {
+          "_type": "component",
+          "component_id": "a651f3ba-4e5c-4067-8097-15a604eccad7",
+          "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "Camera": {
+          "_type": "gameobject",
+          "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+        },
+        "Controller": {
+          "_type": "component",
+          "component_id": "4c12b5d3-b184-40f7-82c8-a62530274120",
+          "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+          "component_type": "CharacterController"
+        },
+        "EyePosition": "0,0,60.15999",
+        "JumpStrength": 400,
+        "RunSpeed": 178,
+        "WalkSpeed": 120
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+        "Name": "Camera",
+        "Position": "-110.1962,0.08235741,151.6533",
+        "Rotation": "0,0.3609293,0,0.9325932",
+        "Scale": "1,1,0.9440157",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "CameraComponent",
+            "__guid": "87289c78-a8b2-44b4-97f1-4b06d35d384a",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 80.03,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          },
+          {
+            "__type": "Bloom",
+            "__guid": "d2de4ccb-5a8c-4508-8f90-bc74ac80a115",
+            "BloomColor": {
+              "color": [
+                {
+                  "c": "1,1,1,1"
+                },
+                {
+                  "t": 1,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "BloomCurve": [
+              {
+                "y": 0.5
+              },
+              {
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "Mode": "Additive",
+            "Strength": 0.5,
+            "Threshold": 0.5,
+            "ThresholdWidth": 0.5
+          },
+          {
+            "__type": "Tonemapping",
+            "__guid": "8ccecdc5-3de8-443e-94a1-4c3cd8e57570",
+            "ExposureCompensation": 0,
+            "MaximumExposure": 2,
+            "MinimumExposure": 1,
+            "Rate": 1
+          },
+          {
+            "__type": "Sharpen",
+            "__guid": "25739595-09af-4240-94dc-81c20669380c",
+            "Scale": 0.2
+          }
+        ]
+      },
+      {
+        "__guid": "a21bc0ae-0cc5-4837-87c5-d0600dcb86ab",
+        "Name": "Clothing - sleeveless_jumper",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "2569cbab-3844-4537-8271-99f7867bfb54",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/jumper/sleeveless_jumper/models/sleeveless_jumper.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5c692387-7778-4893-80ac-967e7dfb8e1d",
+        "Name": "Clothing - eyelashes",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "567f3017-f4fe-4471-86f3-dda03166e480",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/hair/eyelashes/models/eyelashes.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "d4bd8d2c-142e-4237-a1e2-62d2e4758308",
+        "Name": "Clothing - eyebrows",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "a5c5e9e9-38f6-48a6-82f6-0aa25dee3403",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/hair/eyebrows/models/eyebrows.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ec31596a-8348-45b3-820b-1f684fba1123",
+        "Name": "Clothing - hair_baldingbrown",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "65e00c09-1b5c-4238-a23e-c38e6423e052",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/hair/hair_balding/models/hair_baldingbrown.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "24b1accf-d50b-4feb-bf5b-619163244b0d",
+        "Name": "Clothing - stubble",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "cd478f05-8990-4e1d-9555-134afa5b1ee3",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/hair/stubble/model/stubble.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "34ce197a-baf3-4ab6-86b0-acc9a2169760",
+        "Name": "Clothing - jeans",
+        "Position": "0,0,0",
+        "Tags": "clothing",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "a38d2025-b788-4a26-b240-44a089ef8c88",
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "95b8c295-ebf5-4b53-85ff-47fdac96e213",
+              "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/citizen_clothes/jacket/longsleeve/models/jeans.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
