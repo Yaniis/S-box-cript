@@ -1,5 +1,4 @@
 using Sandbox.Citizen;
-using Sandbox.VR;
 
 public sealed class SnotPlayer : Component
 {
@@ -41,6 +40,20 @@ public sealed class SnotPlayer : Component
 	public float JumpStrength { get; set; } = 400f;
 	public int JumpRemained { get; set; } = 2;
 
+
+	[Property]
+	[Category( "Stats" )]
+	public float PunchStrength { get; set; } = 1f;
+
+	[Property]
+	[Category( "Stats" )]
+	public float PunchCooldown { get; set; } = 0.5f;
+
+	[Property]
+	[Category( "Stats" )]
+	public float PunchRange { get; set; } = 50f;
+	TimeSince _lastPunch;
+
 	/// <summary>
 	/// Where the camero rotates around and the aim originates from
 	/// </summary>
@@ -54,7 +67,10 @@ public sealed class SnotPlayer : Component
 
 	protected override void DrawGizmos()
 	{
-		Gizmo.Draw.LineSphere( EyePosition, 10f );
+		var draw = Gizmo.Draw;
+
+		draw.LineSphere( EyePosition, 10f );
+		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 );
 	}
 
 	protected override void OnUpdate()
@@ -76,6 +92,32 @@ public sealed class SnotPlayer : Component
 			Camera.Transform.Position = cameraTrace.EndPosition;
 			Camera.Transform.LocalRotation = cameraTransform.Rotation;
 		}
+	}
+
+	public void Punch()
+	{
+		if( Animator != null ) 
+		{
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
+			Animator.Target.Set( "b_attack", true );
+		}
+
+		var punchTrace = Scene.Trace
+			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
+			.Size( 10f )
+			.WithoutTags( "player" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+
+		if ( punchTrace.Hit )
+			if ( punchTrace.GameObject.Components.TryGet<UnitsInfo>( out var unitInfo ) )
+			{
+				Log.Info( "Hit" );
+				unitInfo.Damage( PunchStrength );
+			}
+
+		_lastPunch = 0f;
+
 	}
 
 	protected override void OnFixedUpdate()
@@ -122,7 +164,18 @@ public sealed class SnotPlayer : Component
 		{
 			Animator.IsGrounded = Controller.IsOnGround;
 			Animator.WithVelocity( Controller.Velocity );
+
+			if( _lastPunch >= 2f )
+			{
+				Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
+			}
+
 		}
+
+		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
+			Punch();
+		
+
 	}
 
 	protected override void OnStart()
