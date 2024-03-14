@@ -64,7 +64,6 @@ public sealed class UnitsInfo : Component
 
 	public void Kill () 
 	{
-
 		Health = 0;
 		Alive = false;
 

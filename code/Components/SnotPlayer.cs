@@ -1,3 +1,4 @@
+using Sandbox;
 using Sandbox.Citizen;
 
 public sealed class SnotPlayer : Component
@@ -65,12 +66,43 @@ public sealed class SnotPlayer : Component
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 
+
+	public class CylinderData
+	{
+		public Vector3 position;
+		public float radius;
+		public float duration;
+
+		public CylinderData( Vector3 start, float r, float d )
+		{
+			position = start;
+			radius = r;
+			duration = d;
+		}
+	}
+
+	private List<CylinderData> cylinderDataList = new List<CylinderData>();
+
+	public void AddSphere( Vector3 position,float radius, float duration )
+	{
+		cylinderDataList.Add( new CylinderData( position, radius, duration ) );
+	}
+
+	private void DrawCylinders()
+	{
+		foreach ( var data in cylinderDataList )
+		{
+			//Gizmo.Draw.SolidSphere( );
+		}
+	}
+
 	protected override void DrawGizmos()
 	{
 		var draw = Gizmo.Draw;
 
 		draw.LineSphere( EyePosition, 10f );
-		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 );
+		// Range user
+		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 15 );
 	}
 
 	protected override void OnUpdate()
@@ -103,8 +135,8 @@ public sealed class SnotPlayer : Component
 		}
 
 		var punchTrace = Scene.Trace
-			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
-			.Size( 10f )
+			.FromTo( EyeWorldPosition, EyeWorldPosition - 10f + EyeAngles.Forward * PunchRange )
+			.Size( 15f )
 			.WithoutTags( "player" )
 			.IgnoreGameObjectHierarchy( GameObject )
 			.Run();
@@ -112,7 +144,6 @@ public sealed class SnotPlayer : Component
 		if ( punchTrace.Hit )
 			if ( punchTrace.GameObject.Components.TryGet<UnitsInfo>( out var unitInfo ) )
 			{
-				Log.Info( "Hit" );
 				unitInfo.Damage( PunchStrength );
 			}
 

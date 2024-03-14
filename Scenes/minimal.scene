@@ -2,7 +2,7 @@
   "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
-      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
@@ -11,6 +11,7 @@
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "fa772e2f-4e49-4eb2-84af-eb122111395a",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.94419,0.97767,1,1",
@@ -20,7 +21,7 @@
       ]
     },
     {
-      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
@@ -28,11 +29,13 @@
       "Components": [
         {
           "__type": "SkyBox2D",
+          "__guid": "d8a77982-a428-442e-b296-3c95c069e86d",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "__guid": "9143393d-981e-4f0e-95e1-edd11a57bced",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -45,7 +48,7 @@
       ]
     },
     {
-      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
       "Position": "-10.29982,0,0",
       "Scale": "5,5,5",
@@ -54,6 +57,7 @@
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "6aed8f15-addb-48fc-bd23-8d7842d6bfe9",
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/plane.vmdl",
@@ -62,6 +66,7 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "4eac8c56-fa43-4c0c-a231-cdf6c455cb05",
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "200,200,10",
@@ -70,7 +75,7 @@
       ]
     },
     {
-      "Id": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
+      "__guid": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
       "Name": "Cube",
       "Position": "21.41682,74.1244,14.40159",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
@@ -80,6 +85,7 @@
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "0226484a-5489-465f-9d2d-0dd9272a3eae",
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
@@ -88,6 +94,7 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "20d9a4ee-e105-4549-9efc-3b1496fcde2c",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
@@ -95,20 +102,22 @@
         },
         {
           "__type": "Rigidbody",
+          "__guid": "bcc702b6-c768-4cdf-9b4c-6a7abd11508d",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
           "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "523e3e8f-a4ec-4ec1-af9a-d86ffc9c17e1",
+      "__guid": "523e3e8f-a4ec-4ec1-af9a-d86ffc9c17e1",
       "Name": "Cube (1)",
-      "Position": "40.81348,46.97572,14.40159",
+      "Position": "40.81347,46.97573,87.23899",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
@@ -116,6 +125,7 @@
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "e242bc39-1c09-44c8-90ce-bab99d63f286",
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
@@ -124,6 +134,7 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "29ffb61b-f8d2-4065-8b97-a080bc92b0b6",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
@@ -131,255 +142,34 @@
         },
         {
           "__type": "Rigidbody",
+          "__guid": "40224f62-0f1d-42b7-bbb2-4d8a31acc19c",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
           "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "5b483a09-bbf2-4949-98c7-a73b789d0ee7",
-      "Name": "Cube (2)",
-      "Position": "49.44551,30.8443,144.2808",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Rigidbody",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "Id": "b633c894-76ab-4b87-830d-c360f5990d21",
-      "Name": "Cube (4)",
-      "Position": "96,0,160",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Rigidbody",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "Id": "61726b21-d71d-49d5-896f-924b5e851919",
-      "Name": "Cube (3)",
-      "Position": "49.44551,96,144.2808",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "BoxCollider",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Rigidbody",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "Id": "32c328cd-7b17-477b-9862-e177ebfb91ca",
+      "__guid": "31f7c0c0-b7e4-408c-9836-8d8124c66179",
       "Name": "Player",
-      "Position": "-152.3224,101.4392,2.42354",
-      "Rotation": "0,0,-0.7121843,0.7019925",
+      "Position": "-80.97726,7.142883,1.798523",
       "Scale": "1,1,1.059305",
       "Enabled": true,
       "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "SkinnedModelRenderer",
-          "BodyGroups": 341,
-          "CreateBoneObjects": false,
-          "Model": "models/citizen/citizen.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "CharacterController",
-          "Acceleration": 10,
-          "Bounciness": 0.3,
-          "GroundAngle": 45,
-          "Height": 64,
-          "IgnoreLayers": "",
-          "Radius": 16,
-          "StepHeight": 18
-        },
-        {
-          "__type": "CitizenAnimationHelper",
-          "BodyWeight": 1,
-          "EyesWeight": 1,
-          "HeadWeight": 1,
-          "Height": 1,
-          "LookAtEnabled": false,
-          "Target": {
-            "_type": "component",
-            "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "SnotPlayer",
-          "Animator": {
-            "_type": "component",
-            "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
-            "component_type": "CitizenAnimationHelper"
-          },
-          "Camera": {
-            "_type": "gameobject",
-            "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
-          },
-          "Controller": {
-            "_type": "component",
-            "go": "32c328cd-7b17-477b-9862-e177ebfb91ca",
-            "component_type": "CharacterController"
-          },
-          "EyePosition": "0,0,60.15999",
-          "JumpAmount": 2,
-          "JumpStrength": 400,
-          "RunSpeed": 178,
-          "WalkSpeed": 120
-        }
-      ],
-      "Children": [
-        {
-          "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-          "Name": "Camera",
-          "Position": "369.3761,-106.3263,240.3711",
-          "Rotation": "-0.3053911,0.0976209,0.9022349,0.288407",
-          "Scale": "1,1,0.9440156",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "Components": [
-            {
-              "__type": "CameraComponent",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
-              "ClearFlags": "All",
-              "FieldOfView": 80.03,
-              "IsMainCamera": true,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 10
-            },
-            {
-              "__type": "Bloom",
-              "BloomColor": {
-                "color": [
-                  {
-                    "c": "1,1,1,1"
-                  },
-                  {
-                    "t": 1,
-                    "c": "1,1,1,1"
-                  }
-                ],
-                "alpha": []
-              },
-              "BloomCurve": [
-                {
-                  "y": 0.5
-                },
-                {
-                  "x": 1,
-                  "y": 1
-                }
-              ],
-              "Mode": "Additive",
-              "Strength": 0.5,
-              "Threshold": 0.5,
-              "ThresholdWidth": 0.5
-            },
-            {
-              "__type": "Tonemapping",
-              "ExposureCompensation": 0,
-              "MaximumExposure": 2,
-              "MinimumExposure": 1,
-              "Rate": 1
-            },
-            {
-              "__type": "Sharpen",
-              "Scale": 0.2
-            }
-          ]
-        }
-      ]
+      "__Prefab": "prefabs/player.prefab"
+    },
+    {
+      "__guid": "c48e2bd3-2662-4c74-be8c-91af7b1d4d0b",
+      "Name": "snot",
+      "Position": "95.32938,-81.11398,0.1907806",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "__Prefab": "prefabs/snot.prefab"
     }
   ],
   "SceneProperties": {
@@ -405,6 +195,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-11T22:05:01.2506895\u002B01:00",
+  "LastSaved": "2024-03-13T23:30:58.3055578\u002B01:00",
   "__references": []
 }

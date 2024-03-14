@@ -1,7 +1,42 @@
 {
-  "RootObject": null,
+  "RootObject": {
+    "__guid": "96b6d863-32e3-4e25-a31b-cb7e917b1523",
+    "Name": "snot",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "UnitsInfo",
+        "__guid": "d9acf492-f2ea-475b-82b0-ad5f1770c0be",
+        "HealthRegenAmount": 0.5,
+        "HealthRegenTimer": 3,
+        "MaxHealth": 5,
+        "Team": "Snot"
+      },
+      {
+        "__type": "SkinnedModelRenderer",
+        "__guid": "d7aa7c56-826e-4040-8524-e51c07b09140",
+        "BodyGroups": 5,
+        "CreateBoneObjects": false,
+        "Model": "models/snot/snot.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "SphereCollider",
+        "__guid": "78380f4a-9a76-445a-b29b-6f2a6b2ed295",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Radius": 35.040012,
+        "Static": false
+      }
+    ],
+    "Children": []
+  },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "__references": [
+    "fish.snot"
+  ]
 }
