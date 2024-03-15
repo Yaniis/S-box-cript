@@ -96,6 +96,11 @@ public sealed class SnotPlayer : Component
 		}
 	}
 
+	public void ClearCylinders()
+	{
+		cylinderDataList.Clear();
+	}
+
 	protected override void DrawGizmos()
 	{
 		var draw = Gizmo.Draw;
@@ -146,7 +151,10 @@ public sealed class SnotPlayer : Component
 			if ( punchTrace.GameObject.Components.TryGet<UnitsInfo>( out var unitInfo ) )
 			{
 				unitInfo.Damage( PunchStrength );
-				AddSphere( punchTrace.HitPosition, 10f, 10f); 
+				AddSphere( punchTrace.HitPosition, 10f, 10f);
+
+				if (!unitInfo.Alive)
+					ClearCylinders();
 			}
 
 		_lastPunch = 0f;
@@ -167,14 +175,12 @@ public sealed class SnotPlayer : Component
 		// Jump event
 		if ( Input.Pressed( "Jump" ) && JumpRemained != 0 )
 		{
-
 			Controller.IsOnGround = false;
 			Controller.Velocity = Vector3.Up * JumpStrength;
 
 			JumpRemained--;
 
-			if ( Animator != null )
-				Animator.TriggerJump();
+			Animator?.TriggerJump();
 		}
 
 		if ( Controller.IsOnGround )
