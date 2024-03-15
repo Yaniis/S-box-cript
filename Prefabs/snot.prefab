@@ -27,7 +27,7 @@
         "__guid": "78380f4a-9a76-445a-b29b-6f2a6b2ed295",
         "Center": "0,0,0",
         "IsTrigger": false,
-        "Radius": 35.040012,
+        "Radius": 50.079967,
         "Static": false
       }
     ],
@@ -36,6 +36,8 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": [
     "fish.snot"
   ]

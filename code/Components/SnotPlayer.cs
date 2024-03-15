@@ -92,7 +92,7 @@ public sealed class SnotPlayer : Component
 	{
 		foreach ( var data in cylinderDataList )
 		{
-			//Gizmo.Draw.SolidSphere( );
+			Gizmo.Draw.SolidSphere( data.position, data.radius );
 		}
 	}
 
@@ -107,6 +107,7 @@ public sealed class SnotPlayer : Component
 
 	protected override void OnUpdate()
 	{
+		DrawCylinders();
 		EyeAngles += Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
@@ -145,6 +146,7 @@ public sealed class SnotPlayer : Component
 			if ( punchTrace.GameObject.Components.TryGet<UnitsInfo>( out var unitInfo ) )
 			{
 				unitInfo.Damage( PunchStrength );
+				AddSphere( punchTrace.HitPosition, 10f, 10f); 
 			}
 
 		_lastPunch = 0f;
