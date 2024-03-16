@@ -20,9 +20,26 @@ public sealed class SnotComponent : Component
 		}
 	}
 
+	protected override void OnUpdate()
+	{
+		if ( Model == null ) return;
+		if ( Info == null ) return;
+
+		// Lerp health for transition to different state of life
+		var currentHealth = Model.GetFloat( "health" );
+		var scaledHealth = Info.Health / Info.MaxHealth * 100;
+		var lerpedHealth = MathX.Lerp( currentHealth, scaledHealth, Time.Delta / 0.1f );
+
+		Log.Info(lerpedHealth.ToString() );
+
+
+		Model.Set( "health", lerpedHealth );
+	}
+
 	public void DamageAnim( float damage )
 	{
 		Model?.Set( "hit", true );
+		Model?.Set( "damage", damage );
 	}
 
 	public void DeathAnim()
@@ -30,7 +47,4 @@ public sealed class SnotComponent : Component
 		Model?.Set( "dead", true );
 	}
 
-	protected override void OnUpdate()
-	{
-	}
 }
