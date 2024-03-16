@@ -31,6 +31,13 @@ public sealed class UnitsInfo : Component
 	TimeSince _LastDamage;
 	TimeUntil _NextHealth;
 
+	public event Action<float> OnDamage;
+	public event Action OnDeath;
+
+	[Property]
+	[Range( 1f, 5f, 1f )]
+	public float DelayDeath { get; set; }
+
 	protected override void OnStart()
 	{
 		Health = MaxHealth;
@@ -58,14 +65,20 @@ public sealed class UnitsInfo : Component
 		if ( damage > 0 )
 			_LastDamage = 0f;
 
+		OnDamage?.Invoke( damage );
+
 		if ( Health <= 0 )
 			Kill();
 	}
 
-	public void Kill () 
+	public async void Kill () 
 	{
 		Health = 0;
 		Alive = false;
+
+		OnDeath?.Invoke();
+
+		await Task.DelaySeconds(DelayDeath);
 
 		GameObject.Destroy();
 	}
