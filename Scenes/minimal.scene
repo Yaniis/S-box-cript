@@ -1,5 +1,5 @@
 {
-  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "__guid": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -195,6 +195,8 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-13T23:30:58.3055578\u002B01:00",
+  "LastSaved": "2024-03-17T23:37:27.9685691\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

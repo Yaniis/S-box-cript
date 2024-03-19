@@ -203,8 +203,14 @@
           "Name": "Chat",
           "KeyboardCode": "enter",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Freecam",
+          "KeyboardCode": "ALT",
+          "GroupName": "Other"
         }
-      ]
+      ],
+      "__guid": "e8c4e918-c69b-42ec-a4dc-a7c7d649af82"
     }
   }
 }

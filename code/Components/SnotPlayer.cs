@@ -113,6 +113,7 @@ public sealed class SnotPlayer : Component
 	protected override void OnUpdate()
 	{
 		DrawCylinders();
+
 		EyeAngles += Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
@@ -130,6 +131,7 @@ public sealed class SnotPlayer : Component
 			Camera.Transform.Position = cameraTrace.EndPosition;
 			Camera.Transform.LocalRotation = cameraTransform.Rotation;
 		}
+
 	}
 
 	public void Punch()
@@ -213,6 +215,12 @@ public sealed class SnotPlayer : Component
 
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 			Punch();
+
+		if ( Input.Down( "Freecam" ) )
+		{
+			Log.Info( "duck" );
+		}
+
 		
 
 	}

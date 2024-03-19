@@ -24,14 +24,12 @@ public sealed class SnotComponent : Component
 	{
 		if ( Model == null ) return;
 		if ( Info == null ) return;
+		if ( !Info.Alive ) return;
 
 		// Lerp health for transition to different state of life
 		var currentHealth = Model.GetFloat( "health" );
 		var scaledHealth = Info.Health / Info.MaxHealth * 100;
 		var lerpedHealth = MathX.Lerp( currentHealth, scaledHealth, Time.Delta / 0.1f );
-
-		Log.Info(lerpedHealth.ToString() );
-
 
 		Model.Set( "health", lerpedHealth );
 	}

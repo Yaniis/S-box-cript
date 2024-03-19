@@ -8,6 +8,7 @@
       {
         "__type": "UnitsInfo",
         "__guid": "d9acf492-f2ea-475b-82b0-ad5f1770c0be",
+        "DelayDeath": 2,
         "HealthRegenAmount": 0.5,
         "HealthRegenTimer": 3,
         "MaxHealth": 5,
@@ -29,6 +30,22 @@
         "IsTrigger": false,
         "Radius": 50.079967,
         "Static": false
+      },
+      {
+        "__type": "SnotComponent",
+        "__guid": "3821c2f5-f137-49b6-8513-7ddee7767608",
+        "Info": {
+          "_type": "component",
+          "component_id": "d9acf492-f2ea-475b-82b0-ad5f1770c0be",
+          "go": "96b6d863-32e3-4e25-a31b-cb7e917b1523",
+          "component_type": "UnitsInfo"
+        },
+        "Model": {
+          "_type": "component",
+          "component_id": "d7aa7c56-826e-4040-8524-e51c07b09140",
+          "go": "96b6d863-32e3-4e25-a31b-cb7e917b1523",
+          "component_type": "SkinnedModelRenderer"
+        }
       }
     ],
     "Children": []
