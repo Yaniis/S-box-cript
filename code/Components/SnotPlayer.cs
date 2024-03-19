@@ -66,6 +66,7 @@ public sealed class SnotPlayer : Component
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 
+	public bool isFreeCam { get; set; } = false;
 
 	public class CylinderData
 	{
@@ -116,11 +117,18 @@ public sealed class SnotPlayer : Component
 
 		EyeAngles += Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
-		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+
+		// Character follow EyeAngles
+
+		var cameraRotation = EyeAngles.WithYaw( 0f );
+		if (!isFreeCam )
+			Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+		else
+			cameraRotation = EyeAngles;
 
 		if ( Camera != null )
 		{
-			var cameraTransform = _initialCameraTransform.RotateAround( EyePosition, EyeAngles.WithYaw( 0f ) );
+			var cameraTransform = _initialCameraTransform.RotateAround( EyePosition, cameraRotation );
 			var cameraPosition = Transform.Local.PointToWorld( cameraTransform.Position );
 			var cameraTrace = Scene.Trace.Ray( EyeWorldPosition, cameraPosition )
 				.Size( 5f )
@@ -216,10 +224,12 @@ public sealed class SnotPlayer : Component
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 			Punch();
 
+		isFreeCam = false;
+
 		if ( Input.Down( "Freecam" ) )
-		{
-			Log.Info( "duck" );
-		}
+			isFreeCam = true;
+
+		
 
 		
 
