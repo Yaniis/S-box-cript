@@ -84,7 +84,7 @@ public sealed class SnotPlayer : Component
 
 	private List<CylinderData> cylinderDataList = new List<CylinderData>();
 
-	public void AddSphere( Vector3 position,float radius, float duration )
+	public void AddSphere( Vector3 position, float radius, float duration )
 	{
 		cylinderDataList.Add( new CylinderData( position, radius, duration ) );
 	}
@@ -118,13 +118,17 @@ public sealed class SnotPlayer : Component
 		EyeAngles += Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
 
-		// Character follow EyeAngles
-
 		var cameraRotation = EyeAngles.WithYaw( 0f );
-		if (!isFreeCam )
+
+		if ( !isFreeCam )
+		{
+			// Character follow EyeAngles
 			Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-		else
+		}
+		 else
+		{
 			cameraRotation = EyeAngles;
+		}
 
 		if ( Camera != null )
 		{
@@ -224,14 +228,18 @@ public sealed class SnotPlayer : Component
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 			Punch();
 
+		if ( Input.Down( "Duck" ) )
+			Animator.DuckLevel = 1f;
+		else
+			Animator.DuckLevel = 0f;
+
 		isFreeCam = false;
 
 		if ( Input.Down( "Freecam" ) )
+		{
 			isFreeCam = true;
+		}
 
-		
-
-		
 
 	}
 

@@ -3,6 +3,7 @@
     "__guid": "8f09812a-196c-4f9c-a99b-d1167f475050",
     "Name": "player",
     "Scale": "1,1,1.059305",
+    "Tags": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
@@ -23,7 +24,7 @@
         "Bounciness": 0.3,
         "GroundAngle": 45,
         "Height": 64,
-        "IgnoreLayers": "",
+        "IgnoreLayers": "player",
         "Radius": 16,
         "StepHeight": 18
       },
@@ -63,21 +64,6 @@
         },
         "EyePosition": "0,0,60.15999",
         "JumpStrength": 400,
-        "OnComponentFixedUpdate": {
-          "Version": 5,
-          "UserData": {
-            "Title": "On Component Fixed Update",
-            "id": "f7a5e00d-9d65-4ea6-ac85-5f723fe1e746"
-          },
-          "Variables": [],
-          "Nodes": [
-            {
-              "Id": 0,
-              "Type": "input"
-            }
-          ],
-          "Links": []
-        },
         "PunchCooldown": 0.5,
         "PunchRange": 100,
         "PunchStrength": 1,
@@ -87,6 +73,7 @@
       {
         "__type": "UnitsInfo",
         "__guid": "e0f5dd0d-bb8f-4569-a840-cae155590938",
+        "DelayDeath": 0,
         "HealthRegenAmount": 0.5,
         "HealthRegenTimer": 3,
         "MaxHealth": 5,
