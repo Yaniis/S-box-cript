@@ -64,6 +64,8 @@ public sealed class SnotPlayer : Component
 	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
 
 	public Angles EyeAngles { get; set; }
+	public Angles FreecamAngles { get; set; }
+
 	Transform _initialCameraTransform;
 
 	public bool isFreeCam { get; set; } = false;
@@ -115,36 +117,46 @@ public sealed class SnotPlayer : Component
 	{
 		DrawCylinders();
 
-		EyeAngles += Input.AnalogLook;
-		EyeAngles = EyeAngles.WithPitch( MathX.Clamp(EyeAngles.pitch, -80f, 80f) );
+		Angles cameraRotation;
 
-		var cameraRotation = EyeAngles.WithYaw( 0f );
-
-		if ( !isFreeCam )
-		{
-			// Character follow EyeAngles
-			Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-		}
-		 else
-		{
-			cameraRotation = EyeAngles;
-		}
 
 		if ( Camera != null )
 		{
+
+			if ( !isFreeCam )
+			{
+				EyeAngles += Input.AnalogLook;
+				EyeAngles = EyeAngles.WithPitch( MathX.Clamp( EyeAngles.pitch, -80f, 80f ) );
+
+				// Character follow EyeAngles
+				Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+
+				cameraRotation = EyeAngles.WithYaw( 0f );
+			}
+			else
+			{
+				// Init new Angles for freecam
+				FreecamAngles += Input.AnalogLook;
+				FreecamAngles = FreecamAngles.WithPitch( MathX.Clamp( FreecamAngles.pitch, -80f, 80f ) );
+
+				cameraRotation = FreecamAngles;
+			}
+
 			var cameraTransform = _initialCameraTransform.RotateAround( EyePosition, cameraRotation );
+
+
 			var cameraPosition = Transform.Local.PointToWorld( cameraTransform.Position );
 			var cameraTrace = Scene.Trace.Ray( EyeWorldPosition, cameraPosition )
-				.Size( 5f )
-				.IgnoreGameObjectHierarchy( GameObject )
-				.WithoutTags( "player" )
-				.Run();
+								   .Size( 5f )
+								   .IgnoreGameObjectHierarchy( GameObject )
+								   .WithoutTags( "player" )
+								   .Run();
 
 			Camera.Transform.Position = cameraTrace.EndPosition;
 			Camera.Transform.LocalRotation = cameraTransform.Rotation;
 		}
-
 	}
+
 
 	public void Punch()
 	{
@@ -228,16 +240,14 @@ public sealed class SnotPlayer : Component
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 			Punch();
 
-		if ( Input.Down( "Duck" ) )
-			Animator.DuckLevel = 1f;
-		else
-			Animator.DuckLevel = 0f;
+		Animator.DuckLevel = Input.Down( "Duck" ) ? 1f : 0f;
 
-		isFreeCam = false;
+		isFreeCam = Input.Down( "Freecam" );
 
-		if ( Input.Down( "Freecam" ) )
+		// Reset freecam angles
+		if ( Input.Released( "Freecam" ) )
 		{
-			isFreeCam = true;
+			FreecamAngles = new();
 		}
 
 
